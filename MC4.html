@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> Mini Challenge </title>
+		<style>
+			button
+			{
+				float: right;
+			}
+			
+			#outerbody
+			{
+				background-color: gray;
+				height: 500px;
+			}
+		</style>
+		
+		<script src="jquery-2.1.1.js"></script>
+		<script>
+			var Total = 0;
+            $(document).ready(function(){
+               $('#Add').click(changedSelect);
+               $('#Checkout').click(printTotal);
+            }); 
+
+            function setText(){
+				//$('div').append(<div></div>);
+				var num = document.getElementById('tb');
+                $('#outerbody').text(num);
+				getText();
+                
+            }
+			
+			
+
+            function changedSelect(){
+				var num = document.getElementById('tb').value;
+				var appPrice = 20;
+				var orPrice = 10;
+				var banPrice = 30;
+				if($("#combobox").val() == "Apple")
+				{
+					$("#outerbody").append("" + num + " " +$("#combobox").val() + " " + num*appPrice + "<br>");
+					Total = Total + (appPrice * num);
+				}	
+				else if($("#combobox").val() == "Orange")
+				{
+					$("#outerbody").append("" + num + " " +$("#combobox").val() + " " + num*orPrice + "<br>");
+					Total = Total + (orPrice * num);
+				}
+				else if($("#combobox").val() == "Banana")
+				{
+					$("#outerbody").append("" + num + " " +$("#combobox").val() + " " + num*banPrice + "<br>");
+					Total = Total + (banPrice * num);
+				}
+            }
+				
+			function printTotal()
+			{
+				 var mess = "Total: "
+				$("#Total").text(mess + Total);
+			}
+        </script>
+	</head>
+	
+	<body>
+		
+		
+		<select id = "combobox">
+			<option value = "Apple" selected> Apple </option>
+			<option value = "Orange"> Orange </option>
+			<option value = "Banana"> Banana </option>
+		</select>
+		<input type = "type" id = "tb">
+		
+		<button id ="Add"> Add to Cart </button>
+		<button id ="Checkout"> Check Out </button>
+		
+		<div id = "outerbody">
+		
+		</div>
+		
+		<div id = "Total">
+			
+		</div>
+	</body>
+</html>
